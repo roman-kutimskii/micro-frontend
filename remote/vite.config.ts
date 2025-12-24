@@ -19,6 +19,9 @@ export default defineConfig({
   preview: {
     port: 5001
   },
+  build: {
+    target: 'es2022'
+  },
   plugins: [
     react(),
     federation({
