@@ -1,0 +1,16 @@
+.greeting {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #ecfeff;
+  border: 1px solid #22d3ee;
+  color: #0f172a;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: #0891b2;
+  margin: 0 0 0.25rem;
+}
