@@ -1,0 +1,65 @@
+name: Deploy micro-frontend to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: |
+          npm --prefix remote install
+          npm --prefix host install
+
+      - name: Build micro frontends
+        env:
+          BASE_PATH: ${{ github.event.repository.name }}
+        run: |
+          npm --prefix remote run build -- --outDir dist/remote
+          npm --prefix host run build
+
+      - name: Assemble Pages artifact
+        run: |
+          mkdir -p build-output/remote
+          cp -R remote/dist/remote/* build-output/remote/
+          cp -R host/dist/* build-output/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build-output
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

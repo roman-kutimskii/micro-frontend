@@ -1,0 +1,26 @@
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+}
+
+.hint {
+  margin-top: 1.5rem;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #312e81;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: left;
+}
+
+ol {
+  padding-left: 1.5rem;
+}
+
+code {
+  background: #e2e8f0;
+  padding: 0.1rem 0.25rem;
+  border-radius: 6px;
+}

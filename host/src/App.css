@@ -1,0 +1,29 @@
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+.footer {
+  color: #475569;
+  margin-top: 1.25rem;
+}
+
+code {
+  background: #e2e8f0;
+  padding: 0.1rem 0.25rem;
+  border-radius: 6px;
+}
